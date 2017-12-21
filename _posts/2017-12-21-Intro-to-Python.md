@@ -52,7 +52,7 @@ print(not t)	  # Logical NOT. Prints "False"
 #### Strings:
 Strings in Python are identified as a contiguous set of characters represented in the quotation marks.  
 Python allows for either pairs of single or double quotes.  
-Subsets of strings can be taken using the slice operator ([ ] and [:] ) with indexes starting at 0 in the beginning of the string and working their way from -1 at the end.
+Subsets of strings can be taken using the slice operator ([[:]) with indexes starting at 0 in the beginning of the string and working their way from -1 at the end.
 
 {% highlight python linenos %}
 str = 'Hello World!'
@@ -84,7 +84,7 @@ print list + anotherlist # Prints concatenated lists
 ### Tuple
 
 A tuple is an (immutable) ordered list of values.  
-The main differences between lists and tuples are: Lists are enclosed in brackets ( [ ] ) and their elements and size can be changed, while tuples are enclosed in parentheses  ( ( ) ) and cannot be updated.  
+The main differences between lists and tuples are: Lists are enclosed in brackets [ ] and their elements and size can be changed, while tuples are enclosed in parentheses ( ) and cannot be updated.  
 {% highlight python linenos %}
 t = (2, 3)
 print(t)	# Prints the tuple.
@@ -98,7 +98,7 @@ Dictionaries are optimized for retrieving data. We must know the key to retrieve
 In Python, dictionaries are defined within braces {} with each item being a pair in the form key:value. Key and value can be of any type.
 {% highlight python linenos %}
 d = {'cat': 'cute', 'dog': 'furry'}  # Create a new dictionary with some data.
-print(d['cat'])			# Get an entry from the dictionary using the key. Prints cute.
+print(d['cat'])	# Get an entry from the dictionary using the key. Prints cute.
 d['mouse'] = 'small'	# Add an entry to the dictionary.
 print(d['mouse'])		# Prints small.
 del d['mouse']			# Remove an entry from the dictionary.
