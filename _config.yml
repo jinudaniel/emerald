@@ -1,5 +1,5 @@
 # Site settings
-title: Jinu Daniel
+title: Jinu Daniel | ML Enthusiast
 description: " A blog which will help you get acquainted with Data Science and Machine Learning"
 url: "http://jinudaniel.github.io"
 author:
@@ -18,7 +18,7 @@ paginate: 8
 paginate_path: /page:num/
 
 # Default values
-defaults:
+default
   -
     scope:
       path: ""

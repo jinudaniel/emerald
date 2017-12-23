@@ -65,7 +65,7 @@ print(str * 2 )    	 # Prints string two times
 print(str + "Again") # Prints concatenated string
 {% endhighlight %}
 
-### List
+### List:
 List is an ordered sequence of items. It is one of the most used datatype in Python and is very flexible. All the items in a list do not need to be of the same type.  
 Declaring a list is pretty straight forward. Items separated by commas are enclosed within brackets [ ].  
 Lists are mutable, meaning, value of elements of a list can be altered.
@@ -77,11 +77,11 @@ print(list)         # Prints complete list
 print(list[0])       # Prints first element of the list
 print(list[1:3])     # Prints elements starting from 2nd till 3rd 
 print(list[2:])      # Prints elements starting from 3rd element
-print anotherlist * 2  # Prints list two times
-print list + anotherlist # Prints concatenated lists
+print(anotherlist * 2)  # Prints list two times
+print(list + anotherlist) # Prints concatenated lists
 {% endhighlight %}
 
-### Tuple
+### Tuple:
 
 A tuple is an (immutable) ordered list of values.  
 The main differences between lists and tuples are: Lists are enclosed in brackets [ ] and their elements and size can be changed, while tuples are enclosed in parentheses ( ) and cannot be updated.  
@@ -91,7 +91,7 @@ print(t)	# Prints the tuple.
 print(t[0])	# Prints the first elemnt of the tuple
 {% endhighlight %}
 
-### Dictionary
+### Dictionary:
 Dictionary is an unordered collection of key-value pairs.  
 Dictionaries are optimized for retrieving data. We must know the key to retrieve the value.  
 
@@ -103,6 +103,10 @@ d['mouse'] = 'small'	# Add an entry to the dictionary.
 print(d['mouse'])		# Prints small.
 del d['mouse']			# Remove an entry from the dictionary.
 {% endhighlight %}
+
+Now you know the basics of Python. You can deep dive into the advanced topics of Python like Loops, Conditional Statements, List Comprehensions etc. by going through their official documentation.
+
+[Python Documentation](https://docs.python.org/3/tutorial/index.html)
 
 
 
