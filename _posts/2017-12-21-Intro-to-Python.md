@@ -1,5 +1,6 @@
 ---
 title: Introduction to Python
+comments: true
 ---
 
 ### What is Python
