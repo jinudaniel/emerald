@@ -106,5 +106,6 @@ print(x.dot(y))
 {% endhighlight %}
 
 This brief overview has touched on many of the important topics that you need to know about numpy. Check out the documentation to know more about numpy.    
+  
 [Numpy Reference](https://docs.scipy.org/doc/numpy/reference/){:target="_blank"}  
 [Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e6b8c7d1-6e9b-41c5-879f-7f82325cb18f){:target="_blank"}
