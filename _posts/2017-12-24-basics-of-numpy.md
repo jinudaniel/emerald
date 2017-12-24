@@ -27,9 +27,9 @@ Numpy internally provides many functions to create arrays.
 
 {% highlight python linenos %}
 np.random.rand(5,5) # Creates a 5x5 matrix of random numbers
-					# from a uniform distribution over [0,1]
+	# from a uniform distribution over [0,1]
 np.random.randn(3,2) # Creates a 3x2 matrix of random numbers
-					 # from a standard normal distribution
+	# from a standard normal distribution
 np.zeros((3,4)) # Creates a 3x4 matrix of all zeros
 np.ones((2,2))  # Creats a 2x2 matrix of all ones
 np.eye(4) # Creates a 4x4 Identity matrix
@@ -50,8 +50,8 @@ print(a[6:])  # Prints array([ 6,  7,  8,  9, 10])
 a_2d = np.array([[5,10,15],[20,25,30],[35,40,45]])
 print(a_2d)
 # Prints array([[ 5, 10, 15],
-#      			[20, 25, 30],
-#      			[35, 40, 45]])
+#      		[20, 25, 30],
+#      		[35, 40, 45]])
 
 print(a_2d[0][0]) # Bracket notation. Prints 5
 print(a_2d[1,2])  # Comma notation. Prints 30
@@ -60,7 +60,7 @@ print(a_2d[:2, 1:])
 #          [25 30]]
 
 {% endhighlight %}
-To know more about numpy array indexing you should [read the documentation](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html)
+To know more about numpy array indexing you should [read the documentation](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html){:target="_blank"}
 
 ### Numpy operations
 Arithmetic operators on arrays apply elementwise. A new array is created and filled with the result.
@@ -84,7 +84,8 @@ print(arr * arr)
  `*` is elementwise multiplication, not matrix
 multiplication. We instead use the `dot` function to compute inner
 products of vectors, to multiply a vector by a matrix, and to
-multiply matrices. `dot` is available both as a function in the numpy
+multiply matrices.  
+`dot` is available both as a function in the numpy
 module and as an instance method of array objects
 {% highlight python linenos %}
 a = np.array([1,2])
@@ -104,6 +105,6 @@ print(np.dot(x, y))
 print(x.dot(y))
 {% endhighlight %}
 
-This brief overview has touched on many of the important topics that you need to know about numpy. Check out the documentation to know more about numpy.
-[Numpy Reference](https://docs.scipy.org/doc/numpy/reference/)
-[Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e6b8c7d1-6e9b-41c5-879f-7f82325cb18f)
+This brief overview has touched on many of the important topics that you need to know about numpy. Check out the documentation to know more about numpy.    
+[Numpy Reference](https://docs.scipy.org/doc/numpy/reference/){:target="_blank"}  
+[Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e6b8c7d1-6e9b-41c5-879f-7f82325cb18f){:target="_blank"}
