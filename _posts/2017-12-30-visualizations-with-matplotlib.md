@@ -96,6 +96,56 @@ plt.plot(x,y,color ='purple', linewidth = 3, linestyle = '--', marker = 'o')
 
 ![Add marker](/img/matplotlib_6.png "Add marker")
 
-Check out the [matplotlib documentation](https://matplotlib.org/tutorials/index.html){:target="_blank"} to deep dive into this.
+#### Scatter Plot
+Scatter plots are used to plot data points on a horizontal and a vertical axis in the attempt to show how much one variable is affected by another. Each row in the data table is represented by a marker whose position depends on its values in the columns set on the X and Y axes.
+
+{% highlight python %}
+x = np.random.rand(1, 50)
+y = np.random.rand(1, 50)
+plt.scatter(x, y, color='red')
+plt.xlabel('X axis')
+plt.ylabel('Y axis')
+plt.title('Scatter plot')
+plt.show()
+{% endhighlight %}
+
+![Scatter Plot](/img/matplotlib_7.png "Scatter Plot")
+
+#### Histogram
+Histograms are useful for plotting the distribution of numbers across a range of possible values.  It works by taking a list of numbers, binning those numbers within a number of ranges, and counting the number of occurrences in each bin.
+
+{% highlight python %}
+x = np.random.randn(1000)
+plt.hist(x, bins=30)
+plt.ylabel('Frequency')
+plt.title('Histogram')
+{% endhighlight %}
+
+![Histogram](/img/matplotlib_8.png "Histogram")
+
+#### Bar Chart
+Bar charts are used to display values associated with categorical data.
+
+{% highlight python %}
+x = ['Java', 'Python', 'PHP', 'Javascript', 'C#', 'C']
+share = [21.5, 19.3, 8.3, 7.9, 7.6, 6.3]
+
+x_pos = [i for i, _ in enumerate(x)]
+
+plt.bar(x_pos, share, color='green')
+plt.xlabel("Programming Languages")
+plt.ylabel("Share(%)")
+plt.title("Programming Language Index")
+
+plt.xticks(x_pos, x)
+
+plt.show()
+{% endhighlight %}
+
+![Bar Chart](/img/matplotlib_9.png "Bar Chart")
+
+Check out the [matplotlib documentation](https://matplotlib.org/tutorials/index.html){:target="_blank"} to deep dive into this.  
+Also cheat sheet can be found [here](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf){:target="_blank"}.
+
 
 
