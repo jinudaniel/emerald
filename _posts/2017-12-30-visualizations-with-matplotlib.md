@@ -2,6 +2,7 @@
 title: Visualizations with Matplotlib
 comments: true
 ---
+> A picture is worth a thousand words
 
 ### What is Visualization?
 A human mind can easily read and understand a chart or image as compared to looking through a large chunk of data in a table or a spreadsheet. Data visualization is a powerful technique to visualize and get meaningful insights from the dataset. 
@@ -10,7 +11,7 @@ A human mind can easily read and understand a chart or image as compared to look
 Matplotlib provides a way to easily generate a wide variety of plots and charts in a few lines of Python code. It is an open source project that can be integrated into Python scripts, jupyter notebooks, web application servers, and multiple GUI toolkits.  
 
 #### Installing Matplotlib
-The best way to install matplotlib is by downloading the [Anaconda](https://www.anaconda.com/download/) distribution. Anaconda is a set of python libraries which has the standard python programming language libraries as well as numerous third party scipy libraries like numpy, pandas, matplotlib etc.  
+The best way to install matplotlib is by downloading the [Anaconda](https://www.anaconda.com/download/){:target="_blank"} distribution. Anaconda is a set of python libraries which has the standard python programming language libraries as well as numerous third party scipy libraries like numpy, pandas, matplotlib etc.  
 Or you can install matplotlib by using `pip`
 {% highlight python %}
 pip install matplotlib
@@ -93,6 +94,8 @@ plt.plot(x,y,color ='purple', linewidth = 3, linestyle = '--')
 plt.plot(x,y,color ='purple', linewidth = 3, linestyle = '--', marker = 'o') 
 {% endhighlight %}
 
-![Add marker](/img/matplotlib_5.png "Add marker")
+![Add marker](/img/matplotlib_6.png "Add marker")
+
+Check out the [matplotlib documentation](https://matplotlib.org/tutorials/index.html){:target="_blank"} to deep dive into this.
 
 
