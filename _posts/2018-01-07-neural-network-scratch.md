@@ -6,7 +6,7 @@ comments: true
 In this post we will implement a 2-layer neural network from scrtach using Python and numpy. We won't derive the mathematics but I will try to give you an intuition of what we are trying to accomplish.
 
 ### Generating a Dataset
-Let start by creating a dataset that we can use to train our neural network. We will make use of [scikit-learn](http://scikit-learn.org/){:target="_blank"} to create the dataset.
+Let's start by creating a dataset that we can use to train our neural network. We will make use of [scikit-learn](http://scikit-learn.org/){:target="_blank"} to create the dataset.
 {% highlight python linenos %}
 # import the necessary packages
 import numpy as np
@@ -36,7 +36,9 @@ print(y.shape)
 {% endhighlight %}
 
 ### Training a Neural Network.
-Neural neworks are typically organized in layers. Layers are made up of a number of interconnected 'nodes' which contain an 'activation function'. Patterns are presented to the network via the 'input layer', which communicates to one or more 'hidden layers' where the actual processing is done via a system of weighted 'connections'. The hidden layers then link to an 'output layer' where the answer is output as shown in the figure below.
+Neural neworks are typically organized in layers. Layers are made up of a number of interconnected 'nodes' which contain an 'activation function'.  
+Patterns are presented to the network via the 'input layer', which communicates to one or more 'hidden layers' where the actual processing is done via a system of weighted 'connections'.  
+The hidden layers then link to an 'output layer' where the answer is output as shown in the figure below.
 ![2-Layer Neural Network](/img/nn_scratch_2.jpeg "2-Layer Neural Network")
 
 #### Define the neural network structure
@@ -44,7 +46,7 @@ Let us first start by defining some variables which will determine the number of
 {% highlight python linenos %}
 m = X.shape[1] #number of examples
 n_x = X.shape[0] # input layer
-#n_h = 3
+n_h = 1
 n_y = y.shape[0] # output layer
 learning_rate = 0.1 # learning rate
 {% endhighlight %}
@@ -81,11 +83,11 @@ def sigmoid(X):
 
 #### Forward Progagation
 The natural step to do after initialising the model at random, is to check its performance. We start from the input we have, we pass them through the network layer and calculate the actual output of the model. The output is calculated using the below equations.
-For one example $$x^{(i)}$$:
-$$z^{[1] (i)} =  W^{[1]} x^{(i)} + b^{[1] (i)} $$
-$$a^{[1] (i)} = \tanh(z^{[1] (i)}) $$
-$$z^{[2] (i)} = W^{[2]} a^{[1] (i)} + b^{[2] (i)} $$
-$$\hat{y}^{(i)} = a^{[2] (i)} = \sigma(z^{ [2] (i)}) $$
+For one example $$x^{(i)}$$:  
+$$z^{[1] (i)} =  W^{[1]} x^{(i)} + b^{[1] (i)} $$  
+$$a^{[1] (i)} = \tanh(z^{[1] (i)}) $$  
+$$z^{[2] (i)} = W^{[2]} a^{[1] (i)} + b^{[2] (i)} $$  
+$$\hat{y}^{(i)} = a^{[2] (i)} = \sigma(z^{ [2] (i)}) $$  
 
 {% highlight python linenos %}
 def forward_propagation(X, parameters):
@@ -122,7 +124,7 @@ def compute_cost(A2, Y, parameters):
 
 #### Back propagation
 Error is calculated between the expected outputs and the outputs forward propagated from the network. These errors are then propagated backward through the network from the output layer to the hidden layer, updating weights as they go.    
-We will use Gradient Descent algorithm to accomplish this. We won't derive the maths behind this which will involve a fair amount of calculus but an excellent explanation is provided [here](http://colah.github.io/posts/2015-08-Backprop/){:target="_blank"}
+We won't derive the maths behind this as it will involve a fair amount of calculus but an excellent explanation is provided [here](http://colah.github.io/posts/2015-08-Backprop/){:target="_blank"}
 
 {% highlight python linenos %}
 def backward_propagation(parameters, cache, X, Y):
@@ -146,6 +148,38 @@ def backward_propagation(parameters, cache, X, Y):
            "dW2": dW2,
            "db2": db2}
   return grads
+{% endhighlight %}
+
+#### Optimization with Gradient Descent
+Back propagation moves the error information from the end of the network to all the weights inside the network. Optimization algorithms like Gradient Descent will help us in finding the optimum values of weights which will minimize the loss function.  
+
+**General gradient descent rule**: $ \theta = \theta - \alpha \frac{\partial J }{ \partial \theta }$ where $\alpha$ is the learning rate and $\theta$ represents a parameter.  
+More detailed explanation about gradient descent can be found [here](http://iamtrask.github.io/2015/07/27/python-network-part2/){:target="_blank"}
+
+{% highlight python linenos %}
+def update_parameters(parameters, grads):
+    
+    W1 = parameters['W1']
+    b1 = parameters['b1']
+    W2 = parameters['W2']
+    b2 = parameters['b2']
+    
+    dW1 = grads['dW1']
+    db1 = grads['db1']
+    dW2 = grads['dW2']
+    db2 = grads['db2']
+    
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
+    
+    parameters = {"W1": W1,
+                  "b1": b1,
+                  "W2": W2,
+                  "b2": b2}
+    
+    return parameters
 {% endhighlight %}
 
 #### Implementation
@@ -172,6 +206,34 @@ def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
 
     return parameters
 {% endhighlight %}
+
+Train the model for 10000 epcohs and plot the cost.
+{% highlight python linenos %}
+parameters, costs = nn_model(X, y, n_h = 1, num_iterations=10000, print_cost=True)
+plt.plot(costs)
+plt.xlabel('Iterations')
+plt.ylabel('Cost')
+plt.title('Cost function')
+
+{% endhighlight %}
+Cost after iteration 0: 0.693127
+Cost after iteration 1000: 0.671018
+Cost after iteration 2000: 0.442552
+Cost after iteration 3000: 0.354652
+Cost after iteration 4000: 0.329080
+Cost after iteration 5000: 0.320810
+Cost after iteration 6000: 0.317526
+Cost after iteration 7000: 0.315824
+Cost after iteration 8000: 0.314688
+Cost after iteration 9000: 0.313792
+
+![Cost Plot](/img/nn_scratch_3.png "Cost Plot")
+
+I hope this gives you an intuition about neural networks. The entire code is available as a Jupyter notebook [here](https://github.com/jinudaniel/machine-learning-examples/blob/master/neural_network_from_scratch.ipynb){:target="_blank"}
+
+####Further References
+- [CS231n](http://cs231n.github.io/neural-networks-1/){:target="_blank"}
+- [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/){:target="_blank"}
 
 
 
