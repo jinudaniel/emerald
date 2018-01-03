@@ -153,7 +153,7 @@ def backward_propagation(parameters, cache, X, Y):
 #### Optimization with Gradient Descent
 Back propagation moves the error information from the end of the network to all the weights inside the network. Optimization algorithms like Gradient Descent will help us in finding the optimum values of weights which will minimize the loss function.  
 
-**General gradient descent rule**: $ \theta = \theta - \alpha \frac{\partial J }{ \partial \theta }$ where $\alpha$ is the learning rate and $\theta$ represents a parameter.  
+**General gradient descent rule**: $$\theta = \theta - \alpha \frac{\partial J }{ \partial \theta }$$ where $$\alpha$$ is the learning rate and $$\theta$$ represents a parameter.  
 More detailed explanation about gradient descent can be found [here](http://iamtrask.github.io/2015/07/27/python-network-part2/){:target="_blank"}
 
 {% highlight python linenos %}
@@ -216,22 +216,22 @@ plt.ylabel('Cost')
 plt.title('Cost function')
 
 {% endhighlight %}
-Cost after iteration 0: 0.693127
-Cost after iteration 1000: 0.671018
-Cost after iteration 2000: 0.442552
-Cost after iteration 3000: 0.354652
-Cost after iteration 4000: 0.329080
-Cost after iteration 5000: 0.320810
-Cost after iteration 6000: 0.317526
-Cost after iteration 7000: 0.315824
-Cost after iteration 8000: 0.314688
-Cost after iteration 9000: 0.313792
+Cost after iteration 0: 0.693127  
+Cost after iteration 1000: 0.671018  
+Cost after iteration 2000: 0.442552  
+Cost after iteration 3000: 0.354652  
+Cost after iteration 4000: 0.329080  
+Cost after iteration 5000: 0.320810  
+Cost after iteration 6000: 0.317526  
+Cost after iteration 7000: 0.315824  
+Cost after iteration 8000: 0.314688  
+Cost after iteration 9000: 0.313792  
 
 ![Cost Plot](/img/nn_scratch_3.png "Cost Plot")
 
-I hope this gives you an intuition about neural networks. The entire code is available as a Jupyter notebook [here](https://github.com/jinudaniel/machine-learning-examples/blob/master/neural_network_from_scratch.ipynb){:target="_blank"}
+I hope this gives you an intuition about neural networks. The entire code is available as a Jupyter notebook [here](https://github.com/jinudaniel/machine-learning-examples/blob/master/neural_network_from_scratch.ipynb){:target="_blank"}  
 
-####Further References
+#### Further References
 - [CS231n](http://cs231n.github.io/neural-networks-1/){:target="_blank"}
 - [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/){:target="_blank"}
 
