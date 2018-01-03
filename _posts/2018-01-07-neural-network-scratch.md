@@ -81,11 +81,11 @@ def sigmoid(X):
 
 #### Forward Progagation
 The natural step to do after initialising the model at random, is to check its performance. We start from the input we have, we pass them through the network layer and calculate the actual output of the model. The output is calculated using the below equations.
-For one example $x^{(i)}$:
-$$z^{[1] (i)} =  W^{[1]} x^{(i)} + b^{[1] (i)} 
-$$a^{[1] (i)} = \tanh(z^{[1] (i)})
-$$z^{[2] (i)} = W^{[2]} a^{[1] (i)} + b^{[2] (i)}
-$$\hat{y}^{(i)} = a^{[2] (i)} = \sigma(z^{ [2] (i)})
+For one example $$x^{(i)}$$:
+$$z^{[1] (i)} =  W^{[1]} x^{(i)} + b^{[1] (i)} $$
+$$a^{[1] (i)} = \tanh(z^{[1] (i)}) $$
+$$z^{[2] (i)} = W^{[2]} a^{[1] (i)} + b^{[2] (i)} $$
+$$\hat{y}^{(i)} = a^{[2] (i)} = \sigma(z^{ [2] (i)}) $$
 
 {% highlight python linenos %}
 def forward_propagation(X, parameters):
@@ -121,8 +121,8 @@ def compute_cost(A2, Y, parameters):
 {% endhighlight %}
 
 #### Back propagation
-Error is calculated between the expected outputs and the outputs forward propagated from the network. These errors are then propagated backward through the network from the output layer to the hidden layer, updating weights as they go.
-We will use Gradient Descent algorithm to accomplish this. We dont derive the maths behind this which will involve a fair amount of calculus but an excellent explanation is provided [here](http://colah.github.io/posts/2015-08-Backprop/){:target="_blank"}
+Error is calculated between the expected outputs and the outputs forward propagated from the network. These errors are then propagated backward through the network from the output layer to the hidden layer, updating weights as they go.    
+We will use Gradient Descent algorithm to accomplish this. We won't derive the maths behind this which will involve a fair amount of calculus but an excellent explanation is provided [here](http://colah.github.io/posts/2015-08-Backprop/){:target="_blank"}
 
 {% highlight python linenos %}
 def backward_propagation(parameters, cache, X, Y):
@@ -163,11 +163,8 @@ def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
     for i in range(0, num_iterations):
         
         A2, cache = forward_propagation(X, parameters)
-        
-        cost = compute_cost(A2, Y, parameters)
-        
-        grads = backward_propagation(parameters, cache, X, Y)
-        
+        cost = compute_cost(A2, Y, parameters) 
+        grads = backward_propagation(parameters, cache, X, Y) 
         parameters = update_parameters(parameters, grads)
         
         if print_cost and i % 1000 == 0:
