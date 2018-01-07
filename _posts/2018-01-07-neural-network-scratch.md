@@ -3,7 +3,7 @@ title: Neural Network from Scratch in Python
 comments: true
 ---
 
-In this post we will implement a 2-layer neural network from scrtach using Python and numpy. We won't derive the mathematics but I will try to give you an intuition of what we are trying to accomplish.
+In this post we will implement a 2-layer neural network from scratch using Python and numpy. We won't derive the mathematics but I will try to give you an intuition of what we are trying to accomplish.
 
 ### Generating a Dataset
 Let's start by creating a dataset that we can use to train our neural network. We will make use of [scikit-learn](http://scikit-learn.org/){:target="_blank"} to create the dataset.
@@ -207,7 +207,7 @@ def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
     return parameters
 {% endhighlight %}
 
-Train the model for 10000 epcohs and plot the cost.
+Train the model for 10000 epochs and plot the cost.
 {% highlight python linenos %}
 parameters, costs = nn_model(X, y, n_h = 1, num_iterations=10000, print_cost=True)
 plt.plot(costs)
