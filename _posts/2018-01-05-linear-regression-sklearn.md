@@ -10,12 +10,12 @@ Machine learning is an application of Artificial Intelligence (AI). The focus of
 Netflix and Amazon use machine learning to make new product recommendations. Banks use machine learning to detect fraudulent activity in credit card. Healthcare industry is making use of machine learning to detect diseases and to montor and assess patients.
 
 ### Linear Regression
-Linear Regression is a supervised learning problem where the answer to be learned is a continuous value. Linear regression is used to predict the value of an outcome variable Y based on one or more input predictor variables X. The aim is to establish a linear relationship (a mathematical formula) between the predictor variable(s) and the response variable, so that, we can use this formula to estimate the value of the response Y, when only the predictors (Xs) values are known.
+Linear Regression is a supervised learning problem where the answer to be learned is a continuous value. Linear regression is used to predict the value of an outcome variable Y based on one or more input predictor variables X.  The aim is to establish a linear relationship (a mathematical formula) between the predictor variable(s) and the response variable, so that, we can use this formula to estimate the value of the response Y, when only the predictors (Xs) values are known.
 
 In this tutorial, we will implement a simple linear regression algorithm in Python using [Scikit-learn](http://scikit-learn.org/stable/){:target="_blank"}, a machine learning tool for Python.
 
 #### Loading the dataset.
-The dataset that we will use will help us in determining if there is a relation between Brain weight(grams) and Head size(cubic cm). The data set is associated with the following paper: *A Study of the Relations of the Brain to to the Size of the Head*, by R.J. Gladstone, published in Biometrika, 1905. It's a rather quaint data set, created well over a century ago.
+The dataset that we will use will help us in determining if there is a relation between Brain weight(grams) and Head size(cubic cm). The data set is associated with the following paper: *A Study of the Relations of the Brain to to the Size of the Head*, by R.J. Gladstone, published in Biometrika, 1905.  It's a rather quaint data set, created well over a century ago and can be downloaded from [here](https://github.com/jinudaniel/machine-learning-examples/blob/master/dataset_brain.txt){:target="_blank"}.
 {% highlight python linenos %}
 %matplotlib inline
 import matplotlib.pyplot as plt
@@ -91,7 +91,7 @@ df.head()
   </tbody>
 </table>
 </div>
-
+  
 #### Visualizing data
 {% highlight python linenos %}
 plt.scatter(df['head-size'], df['brain-weight'])
@@ -141,8 +141,8 @@ y_pred = lr.predict(X_test)
 {% endhighlight %}
 
 #### Evaluating the model
-$$R^{(2)}$$ is a statistical measure of how close the data are to the fitted regression line. It is also known as the coefficient of determination.  
-In general, the higher the R-squared, the better the model fits your data. Scikit learn's `score` function returns the coefficient of determination $$R^{(2)}$$ of the prediction.
+$$R^{2}$$ is a statistical measure of how close the data are to the fitted regression line. It is also known as the coefficient of determination.  
+In general, the higher the R-squared, the better the model fits your data. Scikit learn's `score` function returns the coefficient of determination $$R^{2}$$ of the prediction.
 
 {% highlight python linenos %}
 lr.score(X_test, y_test)
@@ -163,3 +163,7 @@ plt.xlabel('Head size (cm^3)')
 plt.ylabel('Brain weight (grams)');
 {% endhighlight %}
 ![Linear Regression](/img/lr_sklearn_3.png "Linear Regression")
+
+Entire code is available on [github](https://github.com/jinudaniel/machine-learning-examples/blob/master/linear_regression_sklearn.ipynb){:target="_blank"}.  
+
+To know more about Linear Regression check out this [link](https://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.html).
