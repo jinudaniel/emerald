@@ -42,7 +42,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_
 {% endhighlight %}
 
 #### Categorical Feature Columns
-Feature column is an abstract concept of any raw or derived variable that can be used to predict the target label. To define a feature column for a categorical feature, we can create a `CategoricalColumn` using the tf.feature_column API.    
+Feature column is an abstract concept of any raw or derived variable that can be used to predict the target label. To define a feature column for a categorical feature, we can create a `CategoricalColumn` using the tf.feature_column API.  
+
 If we know the possible values for a Categorical feature columns then we can make use of `categorical_column_with_vocabulary_list` but if we are not aware of all the possible values then we can make use of `categorical_column_with_hash_bucket` with the hash_bucket_size defined.
 
 {% highlight python linenos %}
@@ -72,7 +73,7 @@ Before building the model we will first need to define an input function. The `i
 
 {% highlight python linenos %}
 feature_columns = [age, workclass, education, education_num, marital_status, occupation, 
-				relationship, race, gender, capital_gain, capital_loss, hours_per_week, native_country]
+		relationship, race, gender, capital_gain, capital_loss, hours_per_week, native_country]
 
 input_func = tf.estimator.inputs.pandas_input_fn(x = X_train, y = y_train, batch_size=128, num_epochs=10, shuffle=False)
 model = tf.estimator.LinearClassifier(feature_columns=feature_columns, n_classes=2, model_dir='./output')
