@@ -10,7 +10,7 @@ There are a number of classification models. Classification models include Logis
 
 ### TensorFlow
 TensorFlow is an open source software library for numerical computation using data flow graphs. More about tensorflow can be found in the [official documentation](https://www.tensorflow.org/get_started/){:target="_blank"}.  
-Estimators is a high-level API that reduces much of the boilerplate code you previously needed to write when training a TensorFlow model.
+**Estimators** is a high-level API that reduces much of the boilerplate code you previously needed to write when training a TensorFlow model.
 
 #### Loading the dataset.
 The dataset we'll be using is the [Census Income Dataset](https://archive.ics.uci.edu/ml/datasets/Census+Income){:target="_blank"}. This datset will help us in predicting whether the income exceeds $50K/yr based on census data.
@@ -42,7 +42,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_
 {% endhighlight %}
 
 #### Categorical Feature Columns
-Feature column is an abstract concept of any raw or derived variable that can be used to predict the target label. To define a feature column for a categorical feature, we can create a `CategoricalColumn` using the tf.feature_column API.  
+Feature column is an abstract concept of any raw or derived variable that can be used to predict the target label. To define a feature column for a categorical feature, we can create a `CategoricalColumn` using the tf.feature_column API.    
 If we know the possible values for a Categorical feature columns then we can make use of `categorical_column_with_vocabulary_list` but if we are not aware of all the possible values then we can make use of `categorical_column_with_hash_bucket` with the hash_bucket_size defined.
 
 {% highlight python linenos %}
@@ -71,10 +71,9 @@ hours_per_week = tf.feature_column.numeric_column('hours_per_week')
 Before building the model we will first need to define an input function. The `input_fn` is used to pass feature and labels to the train, evaluate and predict methods of the Estimator.
 
 {% highlight python linenos %}
-feature_columns = [age, workclass, education, education_num, marital_status, occupation, relationship, race, gender, capital_gain, capital_loss, hours_per_week, native_country]
-{% endhighlight %}
+feature_columns = [age, workclass, education, education_num, marital_status, occupation, 
+				relationship, race, gender, capital_gain, capital_loss, hours_per_week, native_country]
 
-{% highlight python linenos %}
 input_func = tf.estimator.inputs.pandas_input_fn(x = X_train, y = y_train, batch_size=128, num_epochs=10, shuffle=False)
 model = tf.estimator.LinearClassifier(feature_columns=feature_columns, n_classes=2, model_dir='./output')
 {% endhighlight %}
@@ -89,9 +88,7 @@ We can evaluate the model’s accuracy using the `evaluate()` function, using ou
 {% highlight python linenos %}
 eval_fn = tf.estimator.inputs.pandas_input_fn(x = X_test, y=y_test, batch_size=128, shuffle=False)
 result = model.evaluate(input_fn=eval_fn)
-{% endhighlight %}
 
-{% highlight python linenos %}
 for key in sorted(result):
   print('%s: %s' % (key, result[key]))
 {% endhighlight %}
