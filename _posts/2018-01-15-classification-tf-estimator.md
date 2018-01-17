@@ -46,16 +46,7 @@ Feature column is an abstract concept of any raw or derived variable that can be
 
 If we know the possible values for a Categorical feature columns then we can make use of `categorical_column_with_vocabulary_list` but if we are not aware of all the possible values then we can make use of `categorical_column_with_hash_bucket` with the hash_bucket_size defined.
 
-{% highlight python linenos %}
-workclass = tf.feature_column.categorical_column_with_hash_bucket('workclass', hash_bucket_size=10)
-education = tf.feature_column.categorical_column_with_hash_bucket('education', hash_bucket_size=100)
-marital_status = tf.feature_column.categorical_column_with_hash_bucket('marital_status', hash_bucket_size=100)
-occupation = tf.feature_column.categorical_column_with_hash_bucket('occupation', hash_bucket_size=100)
-relationship = tf.feature_column.categorical_column_with_hash_bucket('relationship', hash_bucket_size=100)
-race = tf.feature_column.categorical_column_with_hash_bucket('race', hash_bucket_size=100)
-gender = tf.feature_column.categorical_column_with_hash_bucket('gender', hash_bucket_size=100)
-native_country = tf.feature_column.categorical_column_with_hash_bucket('native_country', hash_bucket_size=100)
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/2cba778ea7135c66e3acaa6fbbab7187.js"></script>
 
 #### Numeric Feature Columns
 For Numeric Column we can make use of `numeric_column` for each continuous feature colums.
