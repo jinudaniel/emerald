@@ -47,7 +47,7 @@ Training a model is just a single command using the tf.estimator API
 We can evaluate the model’s accuracy using the `evaluate()` function, using our test data set for validation.
 <script src="https://gist.github.com/jinudaniel/9212751eb1fda4d787038702d46ebeb5.js"></script>
 
-Accuray on the test set is 0.836174 i.e. 83.62%.
+Accuray on the test set is 0.836174 i.e. 83.62%. You can check out the entire code at my [github repo](git remote add origin https://github.com/jinudaniel/tensorflow-examples.git){:target="_blank"}
 
 ### Further Reading
 - [Introduction to TensorFlow Datasets and Estimators](https://developers.googleblog.com/2017/09/introducing-tensorflow-datasets.html){:target="_blank"}
