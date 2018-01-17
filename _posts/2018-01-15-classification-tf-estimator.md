@@ -14,32 +14,14 @@ TensorFlow is an open source software library for numerical computation using da
 
 #### Loading the dataset.
 The dataset we'll be using is the [Census Income Dataset](https://archive.ics.uci.edu/ml/datasets/Census+Income){:target="_blank"}. This datset will help us in predicting whether the income exceeds $50K/yr based on census data.
-{% highlight python linenos %}
-import pandas as pd
-
-df = pd.read_csv('census_data.csv')
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/285bb33861666d7d839ce2a19631159d.js"></script>
 
 Since the task is Binary Classification, we will make use of Pandas `apply` function to convert the `income_bracket` column to a label whose value is 1 if the income is above $50k and 0 otherwise.
-{% highlight python linenos %}
-def fix_label(label):
-    if label == ' <=50K':
-        return 0
-    else:
-        return 1
-
-df['income_bracket'] = df['income_bracket'].apply(fix_label)
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/e4a326e5b8e84a6df41b93a1dd6762b7.js"></script>
 
 #### Train and Test Split.
 Let's make use of sklearn's train_test_split method to split the data into training and test set.
-{% highlight python linenos %}
-from sklearn.model_selection import train_test_split
-X = df.drop('income_bracket', axis = 1)
-Y = df['income_bracket']
-
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/aff24c965fee1e5ab0586df4f5b534ef.js"></script>
 
 #### Categorical Feature Columns
 Feature column is an abstract concept of any raw or derived variable that can be used to predict the target label. To define a feature column for a categorical feature, we can create a `CategoricalColumn` using the tf.feature_column API.  
@@ -51,39 +33,19 @@ If we know the possible values for a Categorical feature columns then we can mak
 #### Numeric Feature Columns
 For Numeric Column we can make use of `numeric_column` for each continuous feature colums.
 
-{% highlight python linenos %}
-age = tf.feature_column.numeric_column('age')
-education_num = tf.feature_column.numeric_column('education_num')
-capital_gain = tf.feature_column.numeric_column('capital_gain')
-capital_loss = tf.feature_column.numeric_column('capital_loss')
-hours_per_week = tf.feature_column.numeric_column('hours_per_week')
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/91773e3c3626d31a891a004223197837.js"></script>
 
 #### Building the Logistic Regression Model
 Before building the model we will first need to define an input function. The `input_fn` is used to pass feature and labels to the train, evaluate and predict methods of the Estimator.
 
-{% highlight python linenos %}
-feature_columns = [age, workclass, education, education_num, marital_status, occupation, 
-		relationship, race, gender, capital_gain, capital_loss, hours_per_week, native_country]
-
-input_func = tf.estimator.inputs.pandas_input_fn(x = X_train, y = y_train, batch_size=128, num_epochs=10, shuffle=False)
-model = tf.estimator.LinearClassifier(feature_columns=feature_columns, n_classes=2, model_dir='./output')
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/641b6a4264ce4d9617548c6d38bcb197.js"></script>
 
 #### Train and Evaluate
 Training a model is just a single command using the tf.estimator API
-{% highlight python linenos %}
-model.train(input_fn=input_func)
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/28a60eab3ab9b214a27a11648f7e1506.js"></script>
 
 We can evaluate the model’s accuracy using the `evaluate()` function, using our test data set for validation.
-{% highlight python linenos %}
-eval_fn = tf.estimator.inputs.pandas_input_fn(x = X_test, y=y_test, batch_size=128, shuffle=False)
-result = model.evaluate(input_fn=eval_fn)
-
-for key in sorted(result):
-  print('%s: %s' % (key, result[key]))
-{% endhighlight %}
+<script src="https://gist.github.com/jinudaniel/9212751eb1fda4d787038702d46ebeb5.js"></script>
 
 Accuray on the test set is 0.836174 i.e. 83.62%.
 
