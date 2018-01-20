@@ -10,10 +10,10 @@ TensorBoard is graph visualization software included with any standard TensorFlo
 TensorBoard, when fully configured, will look something like this. Image from TensorBoard’s website.
 
 ![TensorBoard](/img/tensorboard_1.png "TensorBoard")
-
+To see a TensorBoard in action, click [here](https://www.tensorflow.org/get_started/graph_viz){:target="_blank"}.
 
 ### Launching TensorBoard
-Lets write a simple TensorFlow program and visualize with TensorBoard. We will make use of tf.summary.FileWriter to create an event file in a given directory and add summaries and events to it.
+Lets write a simple TensorFlow program and visualize with TensorBoard. We will make use of `tf.summary.FileWriter` to create an event file in a given directory and add summaries and events to it.
 
 {% highlight python linenos %}
 import tensorflow as tf
@@ -28,11 +28,19 @@ with tf.Session() as sess:
     sess.run(c)
     writer.close()
 {% endhighlight %}
+Now go to Terminal or command prompt and run the below line. Make sure that your present working directory is the
+same as where you ran your Python code.
+{% highlight shell %}
+tensorboard --logdir="./graph"
+{% endhighlight %}
+Open your browser and go to [http://localhost:6006/](http://localhost:6006/) (or the link you get back after running
+tensorboard command) to open TensorBoard.
 
 ![TensorBoard 2](/img/tensorboard_2.png)
 
+
 ### Adding names
-You can use the name property to give a meaningful name to the operation. This will help us in better visualzing the operation in TensorBoard.
+You can use the name property to give a meaningful name to the operation. This will help us in better visualizing the operation in TensorBoard.
 
 {% highlight python linenos %}
 a = tf.add(1, 2, name='First_Add')
