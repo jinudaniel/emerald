@@ -68,7 +68,7 @@ with tf.Session() as sess:
     print(sess.run(c))
     writer.close()
 {% endhighlight %}
-![TensorBoard 4](/img/tensorboard_3.png "Adding Scope")
+![TensorBoard 4](/img/tensorboard_4.png "Adding Scope")
 
 If you want to dive deeper, start by watching this video from the 2017 TensorFlow Developers Conference or you can through the [official documentation](https://www.tensorflow.org/get_started/summaries_and_tensorboard){:target="_blank"}.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eBbEDRsCmv4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
