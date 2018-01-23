@@ -1,5 +1,5 @@
 ---
-title: Tensorflow with TensorBoard
+title: TensorFlow with TensorBoard
 comments: true
 ---
 
