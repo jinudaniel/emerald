@@ -3,7 +3,7 @@ title: Fashion MNIST using ConvNets
 comments: true
 ---
 
-Researchers at [Zalando](http://www.zalando.com/), an e-commerce company, introduced [Fashion MNIST](https://github.com/zalandoresearch/fashion-mnist)) as a drop-in replacement for the original [MNIST](http://yann.lecun.com/exdb/mnist/) dataset. Like MNIST, Fashion MNIST consists of a training set consisting of 60,000 examples belonging to 10 different classes and a test set of 10,000 examples.  
+Researchers at [Zalando](http://www.zalando.com/){:target="_blank"}, an e-commerce company, introduced [Fashion MNIST](https://github.com/zalandoresearch/fashion-mnist){:target="_blank"} as a drop-in replacement for the original [MNIST](http://yann.lecun.com/exdb/mnist/){:target="_blank"} dataset. Like MNIST, Fashion MNIST consists of a training set consisting of 60,000 examples belonging to 10 different classes and a test set of 10,000 examples.  
 Each example is a **28x28 grayscale** image (just like the images in the original MNIST), associated with a label from **10 classes** (t-shirts, trousers, pullovers, dresses, coats, sandals, shirts, sneakers, bags, and ankle boots).  
 Let us use TensorFlow to implement a Convolutional Network to classify these images.
 
@@ -17,7 +17,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 fashion_mnist = input_data.read_data_sets("data/fashion", one_hot=True)
 {% endhighlight %}
 
-Please note that the above code assumes that the dataset has been saved in data/fashion directory. It can downloaded from [here](https://github.com/zalandoresearch/fashion-mnist#get-the-data)
+Please note that the above code assumes that the dataset has been saved in data/fashion directory. It can downloaded from [here](https://github.com/zalandoresearch/fashion-mnist#get-the-data){:target="_blank"}
 
 Let's take a look at some of the examples from the dataset.
 {% highlight python linenos %}
@@ -41,8 +41,8 @@ batch_size = 128
 display_step = 10
 
 # Network Parameters
-num_input = 784 # MNIST data input (Image shape: 28*28)
-num_classes = 10 # MNIST total classes (0-9 digits)
+num_input = 784 # Data input (Image shape: 28*28)
+num_classes = 10 # Total classes (0-9 labels)
 dropout = 0.75 # Dropout probability
 {% endhighlight %}
 
@@ -82,7 +82,7 @@ biases = {
 
 ### Convolutional Layer
 The first layer in a Convolutional Neural Network or ConvNets is always a Convolutional Layer. The primary purpose of Convolution in case of a ConvNet is to extract features from the input image. Convolution preserves the spatial relationship between pixels by learning image features using small squares of input data.  
-I will not go into the details of Convolutional layer but an excellent explanation is provided [here](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/)
+I will not go into the details of Convolutional layer but an excellent explanation is provided [here](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/){:target="_blank"}
 
 {% highlight python linenos %}
 
@@ -94,18 +94,18 @@ def conv2d(x, W, b, strides = 1):
 {% endhighlight %}
 
 ### Pooling Layer
-It is common to periodically insert a Pooling layer in-between successive Conv layers in a ConvNet architecture. Pooling (also called subsampling or downsampling) reduces the dimensionality of each feature map but retains the most important information.  
-Pooling can be of different types: Max, Average, Sum etc, most popular being *Max Pooling*, where the maximum pixel value within each chunk is taken. A diagrammatical illustration of 2×2 max-pooling is given below.
-![Max Pooling](/img/fashion_mnist_3.png "Max Pooling")
-
+It is common to periodically insert a Pooling layer in-between successive Conv layers in a ConvNet architecture. Pooling (also called subsampling or downsampling) reduces the dimensionality of each feature map but retains the most important information.   
+Pooling can be of different types: Max, Average, Sum etc, most popular being **Max Pooling**, where the maximum pixel value within each chunk is taken. 
 {% highlight python linenos %}
 def maxpool2d(x):
     return tf.nn.max_pool(x, ksize=[1,2,2,1], strides=[1,2,2,1], 
     			padding='SAME')
 {% endhighlight %}
+A diagrammatical illustration of 2×2 max-pooling is given below.
+![Max Pooling](/img/fashion_mnist_3.png "Max Pooling")
 
 ### Building the Classification Model
-Now we will start building our CNN based model. It consists of 2 convolutional layer each followed by max pooling. The output of the second max pooling is flattened and fed into a fully connected layer with 1024 neurons with [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) activation. This is then given to a 10 neurons [Softmax](https://en.wikipedia.org/wiki/Softmax_function) activation function.
+Now we will start building our CNN based model. It consists of 2 convolutional layer each followed by max pooling. The output of the second max pooling is flattened and fed into a fully connected layer with 1024 neurons with [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)){:target="_blank"} activation. This is then given to a 10 neurons [Softmax](https://en.wikipedia.org/wiki/Softmax_function){:target="_blank"} activation function.
 
 {% highlight python linenos %}
 def conv_net(x, weights, biases, dropout):
@@ -186,12 +186,12 @@ with tf.Session() as sess:
                         Y: fashion_mnist.test.labels,
                         keep_prob: 1.0}))
 {% endhighlight %}
-Cost after epoch 0: 1.063927
-Cost after epoch 100: 0.139685
-Cost after epoch 200: 0.088170
-Cost after epoch 300: 0.047610
-Cost after epoch 400: 0.023896
-Testing Accuracy: 0.8278
+Cost after epoch 0: 1.063927  
+Cost after epoch 100: 0.139685  
+Cost after epoch 200: 0.088170  
+Cost after epoch 300: 0.047610  
+Cost after epoch 400: 0.023896  
+Testing Accuracy: 0.8278  
 
 ### Plot the cost function
 
