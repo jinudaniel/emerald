@@ -156,7 +156,7 @@ train = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
 {% endhighlight %}
 
 ### Training and Evaluation
-I have trained the model for 500 epochs, printing the cost after every 100 epochs. This gives an accuracy of 82.86% on test set images
+I have trained the model for 500 epochs, printing the cost after every 100 epochs. This gives an accuracy of 81.92% on test set images
 {% highlight python linenos %}
 init = tf.global_variables_initializer()
 costs = []
@@ -206,9 +206,9 @@ plt.show()
 {% endhighlight %}
 ![Cost Function](/img/fashion_mnist_4.png "Cost Function")
 
-The entire code is available on [github](https://github.com/jinudaniel/fashion-mnist/blob/master/fashion_mnist_convnet.ipynb)
+The entire code is available on [github](https://github.com/jinudaniel/fashion-mnist/blob/master/fashion_mnist_convnet.ipynb){:target="_blank"}
 
 ### References
-* [CS231n Convolutional Neural Network](http://cs231n.github.io/convolutional-networks/)
-* [The Data Science Blog](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/)
-* [A Beginner's Guide To Understanding Convnets](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/)
+* [CS231n Convolutional Neural Network](http://cs231n.github.io/convolutional-networks/){:target="_blank"}
+* [The Data Science Blog](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/){:target="_blank"}
+* [A Beginner's Guide To Understanding Convnets](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/){:target="_blank"}
