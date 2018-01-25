@@ -156,7 +156,7 @@ train = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
 {% endhighlight %}
 
 ### Training and Evaluation
-I have trained the model for 500 epochs, printing the cost after every 100 epochs. This gives an accuracy of 82.78% on test set images
+I have trained the model for 500 epochs, printing the cost after every 100 epochs. This gives an accuracy of 82.86% on test set images
 {% highlight python linenos %}
 init = tf.global_variables_initializer()
 costs = []
@@ -180,18 +180,18 @@ with tf.Session() as sess:
     correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
     
-    #Calculate accuracy of 256 Fashion MNIST Test images
+    #Calculate accuracy of Fashion MNIST Test images
     print('Testing Accuracy:', sess.run(accuracy, 
                         feed_dict={X: fashion_mnist.test.images,
                         Y: fashion_mnist.test.labels,
                         keep_prob: 1.0}))
 {% endhighlight %}
-Cost after epoch 0: 1.063927  
-Cost after epoch 100: 0.139685  
-Cost after epoch 200: 0.088170  
-Cost after epoch 300: 0.047610  
-Cost after epoch 400: 0.023896  
-Testing Accuracy: 0.8278  
+Cost after epoch 0: 1.659150      
+Cost after epoch 100: 0.128432      
+Cost after epoch 200: 0.115758      
+Cost after epoch 300: 0.051636      
+Cost after epoch 400: 0.035131      
+Testing Accuracy: 0.8192  
 
 ### Plot the cost function
 
@@ -205,3 +205,10 @@ plt.title("Learning rate =" + str(learning_rate))
 plt.show()
 {% endhighlight %}
 ![Cost Function](/img/fashion_mnist_4.png "Cost Function")
+
+The entire code is available on [github](https://github.com/jinudaniel/fashion-mnist/blob/master/fashion_mnist_convnet.ipynb)
+
+### References
+* [CS231n Convolutional Neural Network](http://cs231n.github.io/convolutional-networks/)
+* [The Data Science Blog](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/)
+* [A Beginner's Guide To Understanding Convnets](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/)
