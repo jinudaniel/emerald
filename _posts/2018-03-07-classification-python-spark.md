@@ -9,11 +9,11 @@ This post assumes that you are aware of the basics of Machine Learning and Apach
 Apache Spark is a powerful open source processing engine built around speed, ease of use, and sophisticated analytics. It was originally developed at UC Berkeley in 2009. It runs on top of existing hadoop cluster and access hadoop data store (HDFS), can also process structured data in Hive and Streaming data from HDFS, Flume, Kafka, Twitter etc.
 
 ### Spark's MLlib
-Apache Spark’s Machine Learning Library (MLlib) allows data scientists to focus on their data problems and models instead of solving the complexities surrounding distributed data (such as infrastructure, configurations, and so on).  
+Apache Spark’s Machine Learning Library (MLlib) allows data scientists to focus on their data problems and models instead of solving the complexities surrounding distributed data (such as infrastructure, configurations and so on).  
 In this post we will implement a Classification model using Logistic Regression and PySpark (Spark's Python API). The dataset we will use is the classic Titanic dataset.
 
 #### Initializing Spark
-A generalized way to use PySpark in Jupyter notebook is to use findpsark. The init method will add the pyspark module to PATH during run time.
+A generalized way to use PySpark in Jupyter notebook is to use findspark. The init method will add the pyspark module to PATH during run time.
 {% highlight python linenos %}
 import findspark
 findspark.init('/home/jinudaniel74/spark-2.1.1-bin-hadoop2.7')
@@ -24,7 +24,7 @@ SparkSession follows builder factory design pattern. The below is the code to cr
 
 {% highlight python linenos %}
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName('logisticregression').getOrCreate()
+spark = SparkSession.builder.appName('classification').getOrCreate()
 {% endhighlight %}
 
 #### Loading the DataSet
@@ -60,7 +60,7 @@ VectorAssembler is a transformer that combines a given list of columns into a si
 {% highlight python linenos %}
 assembler = VectorAssembler(inputCols=['Pclass','SexVec','Age','SibSp','Parch',
 					'Fare', 'EmbarkedVec'], 
-							outputCol='features')
+					outputCol='features')
 {% endhighlight %}
 
 #### Training the model
@@ -95,10 +95,12 @@ accuracy = evaluator.evaluate(predictions, {evaluator.metricName: "accuracy"})
 
 print(accuracy)
 {% endhighlight %}
-0.76  
+**0.76**  
+
 An accuracy of 76% on the test set is not bad. We can tune the model to increase the accuracy or we can use other classification methods like DecisionTreeClassifier, RandomForestClassifier etc.  
-The accuracy increased to 80% when I used DecisionTreeClassifier with default hyperparameters.
+The accuracy increased to 80% when I used DecisionTreeClassifier with default hyperparameters.  
+The entire code is available as a jupyter notebook on my [github repo](https://github.com/jinudaniel/pyspark-notebook/blob/master/logistic_regression.ipynb){:target="_blank"}
 
 ### References
 * [Spark's MLlib Documentation](http://spark.apache.org/docs/latest/ml-guide.html){:target="_blank"}
-* [Spark and Python for Big Data](https://www.udemy.com/spark-and-python-for-big-data-with-pyspark/){:target="_blank"}
+* [Udemy-Spark and Python for Big Data](https://www.udemy.com/spark-and-python-for-big-data-with-pyspark/){:target="_blank"}
