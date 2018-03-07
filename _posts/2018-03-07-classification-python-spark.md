@@ -59,7 +59,7 @@ VectorAssembler is a transformer that combines a given list of columns into a si
 
 {% highlight python linenos %}
 assembler = VectorAssembler(inputCols=['Pclass','SexVec','Age','SibSp','Parch',
-										'Fare', 'EmbarkedVec'], 
+					'Fare', 'EmbarkedVec'], 
 							outputCol='features')
 {% endhighlight %}
 
@@ -72,7 +72,7 @@ from pyspark.ml import Pipeline
 
 log_model = LogisticRegression(labelCol='Survived', featuresCol='features')
 pipeline = Pipeline(stages=[gender_indexer, gender_encoder, embark_indexer, 
-							embark_encoder, assembler, log_model])
+				embark_encoder, assembler, log_model])
 {% endhighlight %}
 
 Split the data into Train and Test set in the ratio 70:30 and fit the model on training data.
@@ -99,6 +99,6 @@ print(accuracy)
 An accuracy of 76% on the test set is not bad. We can tune the model to increase the accuracy or we can use other classification methods like DecisionTreeClassifier, RandomForestClassifier etc.  
 The accuracy increased to 80% when I used DecisionTreeClassifier with default hyperparameters.
 
-References
+### References
 * [Spark's MLlib Documentation](http://spark.apache.org/docs/latest/ml-guide.html){:target="_blank"}
 * [Spark and Python for Big Data](https://www.udemy.com/spark-and-python-for-big-data-with-pyspark/){:target="_blank"}
